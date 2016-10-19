@@ -33,17 +33,20 @@
 
 	<tr>
 		<td>${boardVO.bno}</td>
-		<td><a href='/board/read?bno=${boardVO.bno}'>${boardVO.title}</a></td>
+		<td id="viewcount"><a href='/board/read?bno=${boardVO.bno}'>${boardVO.title}</a></td>
 		<td>${boardVO.writer}</td>
 		<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm"
 				value="${boardVO.regdate}" /></td>
-		<td><span class="badge bg-red">${boardVO.viewcnt }</span></td>
+		<td><span class="badge bg-red">${boardVO.viewcnt}</span></td>
 	</tr>
 
 </c:forEach>
 
 </table>
 
+				<div class='box-footer'>
+					<input type="button" id="write" class='btn btn-primary' value="Write">
+				</div>
 				</div>
 				<!-- /.box-body -->
 				<div class="box-footer">Footer</div>
@@ -60,6 +63,14 @@
 <!-- /.content-wrapper -->
 
 <script>
+
+	$(document).ready( function()
+	{
+		$("#write").on("click", function()
+		{		
+			location.replace('register');
+		});
+	});
     
     var result = '${msg}';
     
